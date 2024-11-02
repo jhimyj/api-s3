@@ -1,3 +1,4 @@
+import json
 import boto3
 
 def lambda_handler(event, context):
@@ -36,7 +37,7 @@ def lambda_handler(event, context):
 
         s3.put_bucket_policy(
             Bucket=bucket_name,
-            Policy=bucket_policy
+            Policy=json.dumps(bucket_policy)
         )
         
     
