@@ -1,4 +1,3 @@
-import json
 import boto3
 import base64
 
@@ -20,10 +19,10 @@ def lambda_handler(event, context):
 
         return {
             'statusCode': 200,
-            'body': json.dumps(f'Archivo {file_name} subido exitosamente en {directory_name} del bucket {bucket_name}')
+            'body': f'Archivo {file_name} subido exitosamente en {directory_name} del bucket {bucket_name}'
         }
     except Exception as e:
         return {
             'statusCode': 500,
-            'body': json.dumps(f'Error al subir el archivo: {str(e)}')
+            'body': f'Error al subir el archivo: {str(e)}'
         }
