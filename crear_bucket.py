@@ -23,7 +23,7 @@ def lambda_handler(event, context):
         )
         
         # Configurar la ACL
-        s3.put_bucket_acl(Bucket=bucket_name, ACL='bucket-owner-full-control')
+        s3.put_bucket_acl(Bucket=bucket_name, ACL='public-read')
         
         
         
