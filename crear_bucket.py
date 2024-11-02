@@ -1,4 +1,3 @@
-import json
 import boto3
 
 def lambda_handler(event, context):
@@ -22,12 +21,15 @@ def lambda_handler(event, context):
             }
         )
         
+        s3.put_bucket_acl(Bucket=bucket_name, ACL='public-read')
+        
+    
         return {
             'statusCode': 200,
-            'body': json.dumps(f'Bucket {bucket_name} creado exitosamente.')
+            'body': f'Bucket {bucket_name} creado exitosamente.'
         }
     except Exception as e:
         return {
             'statusCode': 500,
-            'body': json.dumps(f'Error al crear el bucket: {str(e)}')
+            'body': f'Error al crear el bucket: {str(e)}'
         }
