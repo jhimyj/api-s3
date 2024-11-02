@@ -1,4 +1,3 @@
-import json
 import boto3
 
 def lambda_handler(event, context):
@@ -14,10 +13,10 @@ def lambda_handler(event, context):
 
         return {
             'statusCode': 200,
-            'body': json.dumps(f'El directorio {directory_name} creado exitosamente en el bucket {bucket_name}')
+            'body': f'El directorio {directory_name} creado exitosamente en el bucket {bucket_name}'
         }
     except Exception as e:
         return {
             'statusCode': 500,
-            'body': json.dumps(f'Error al crear el directorio: {str(e)}')
+            'body': f'Error al crear el directorio: {str(e)}'
         }
