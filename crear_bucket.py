@@ -10,10 +10,7 @@ def lambda_handler(event, context):
     try:
         # Crear el bucket sin especificar la región (esto funcionará solo en us-east-1)
         s3.create_bucket(Bucket=bucket_name)
-        
-        # Configurar la ACL
-        s3.put_bucket_acl(Bucket=bucket_name, ACL='public-read')
-        
+
         # Deshabilitar restricciones de acceso público
         s3.put_public_access_block(
             Bucket=bucket_name,
@@ -24,6 +21,11 @@ def lambda_handler(event, context):
                 'IgnorePublicPolicy': False
             }
         )
+        
+        # Configurar la ACL
+        s3.put_bucket_acl(Bucket=bucket_name, ACL='public-read')
+        
+        
         
         return {
             'statusCode': 200,
