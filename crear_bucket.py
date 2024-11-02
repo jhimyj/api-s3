@@ -21,7 +21,23 @@ def lambda_handler(event, context):
             }
         )
         
-        s3.put_bucket_acl(Bucket=bucket_name, ACL='public-read')
+        # Aplicar política para permitir acceso público a las imágenes
+        bucket_policy = {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": "*",
+                    "Action": "s3:GetObject",
+                    "Resource": f"arn:aws:s3:::{bucket_name}/*"
+                }
+            ]
+        }
+
+        s3.put_bucket_policy(
+            Bucket=bucket_name,
+            Policy=bucket_policy
+        )
         
     
         return {
