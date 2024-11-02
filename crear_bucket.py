@@ -22,11 +22,6 @@ def lambda_handler(event, context):
             }
         )
         
-        # Configurar la ACL
-        s3.put_bucket_acl(Bucket=bucket_name, ACL='public-read')
-        
-        
-        
         return {
             'statusCode': 200,
             'body': json.dumps(f'Bucket {bucket_name} creado exitosamente.')
