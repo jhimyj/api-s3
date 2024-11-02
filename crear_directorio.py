@@ -5,8 +5,8 @@ def lambda_handler(event, context):
     s3 = boto3.client('s3')
     
     # Nombre del bucket y del nuevo "directorio"
-    bucket_name = bucket_name = event['body']['bucket']  # Cambia esto por tu bucket
-    directory_name = bucket_name = event['body']['directory']   # Cambia esto por tu nuevo "directorio"
+    bucket_name  = event['body']['bucket']  # Cambia esto por tu bucket
+    directory_name  = event['body']['directory']   # Cambia esto por tu nuevo "directorio"
 
     try:
         # Crear un nuevo "directorio" subiendo un objeto vacío con la clave del "directorio"
