@@ -23,22 +23,22 @@ def lambda_handler(event, context):
         )
         
         # Aplicar política para permitir acceso público a las imágenes
-        bucket_policy = {
-            "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Effect": "Allow",
-                    "Principal": "*",
-                    "Action": "s3:GetObject",
-                    "Resource": f"arn:aws:s3:::{bucket_name}/*"
-                }
-            ]
-        }
+        # bucket_policy = {
+        #     "Version": "2012-10-17",
+        #     "Statement": [
+        #         {
+        #             "Effect": "Allow",
+        #             "Principal": "*",
+        #             "Action": "s3:GetObject",
+        #             "Resource": f"arn:aws:s3:::{bucket_name}/*"
+        #         }
+        #     ]
+        # }
 
-        s3.put_bucket_policy(
-            Bucket=bucket_name,
-            Policy=json.dumps(bucket_policy)
-        )
+        # s3.put_bucket_policy(
+        #     Bucket=bucket_name,
+        #     Policy=json.dumps(bucket_policy)
+        # )
         
     
         return {
