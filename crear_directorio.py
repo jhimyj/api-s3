@@ -10,7 +10,7 @@ def lambda_handler(event, context):
 
     try:
         # Crear un nuevo "directorio" subiendo un objeto vacío con la clave del "directorio"
-        s3.put_object(Bucket=bucket_name, Key=directory_name)
+        s3.put_object(Bucket=bucket_name, Key=directory_name+"/")
 
         return {
             'statusCode': 200,
