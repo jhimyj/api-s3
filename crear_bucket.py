@@ -18,7 +18,7 @@ def lambda_handler(event, context):
                 'BlockPublicAcls': False,
                 'IgnorePublicAcls': False,
                 'BlockPublicPolicy': False,
-                'IgnorePublicPolicy': False
+                'RestrictPublicBuckets': False
             }
         )
         
